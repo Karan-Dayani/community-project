@@ -55,6 +55,9 @@ const TeacherPage = () => {
                 <th scope="col" className="px-6 py-3">
                   Student Email
                 </th>
+                <th scope="col" className="px-6 py-3">
+                  Edit
+                </th>
               </tr>
             </thead>
             <tbody>
@@ -80,6 +83,9 @@ const TeacherPage = () => {
                     {student.lastTestResult ? student.lastTestResult : "null"}
                   </td>
                   <td className="px-6 py-4">{student.loginEmail}</td>
+                  <td className="px-6 py-4">
+                    <Link href={`/student/${student.id}`}>Edit</Link>
+                  </td>
                 </tr>
               ))}
             </tbody>
