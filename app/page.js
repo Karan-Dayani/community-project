@@ -1,7 +1,7 @@
 "use client";
 import { useEffect } from "react";
 import { supabase } from "@/lib/supabase";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 
 export default function Home() {
   const router = useRouter();
@@ -11,7 +11,7 @@ export default function Home() {
         if (session.user.email === "teacher@gmail.com") {
           router.replace("/TeacherPage");
         } else {
-          router.replace("/StudentPage");
+          router.replace(`/StudentPage?user=${session.user.email}`);
         }
       } else {
         router.replace("/Login");
@@ -22,7 +22,7 @@ export default function Home() {
         if (session.user.email === "teacher@gmail.com") {
           router.replace("/TeacherPage");
         } else {
-          router.replace("/StudentPage");
+          router.replace(`/StudentPage?user=${session.user.email}`);
         }
       } else {
         router.replace("/Login");
