@@ -1,12 +1,12 @@
 "use client";
 import React, { Suspense, useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
-import { useParams, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 
 const StudentPage = () => {
   const [data, setData] = useState();
-  const [searchParams, setSearchParams] = useSearchParams();
-  const user = searchParams[1];
+  const searchParams = useSearchParams();
+  const user = searchParams.get("user");
 
   useEffect(() => {
     const getStudent = async () => {
@@ -17,7 +17,7 @@ const StudentPage = () => {
       setData(student[0]);
     };
     getStudent();
-  }, []);
+  }, [user]);
 
   console.log(data);
   return (
